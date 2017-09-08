@@ -9,7 +9,9 @@ public class Product {
 
 	private String name;
 	private String category;
+	private String code;
 	private BigDecimal price;
+	private Integer amount;
 
 	public Product(){
 	}
@@ -30,11 +32,27 @@ public class Product {
 		this.category = category;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	public BigDecimal getPrice() {
 		return price;
 	}
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	public Integer getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Integer amount) {
+		this.amount = amount;
 	}
 }
