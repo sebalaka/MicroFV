@@ -47,6 +47,30 @@
         <h1 th:else="${hasBeenAdded}">Nic nie dodano</h1>
     </div>
 
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Code</th>
+            <th>Price</th>
+            <th>Amount</th>
+        </tr>
+        </thead>
+        <!--<tbody>
+        <tr>
+            <th:block th:each="prodcut : ${prodcut}">
+        <tr>
+            <td th:text="${name}">...</td>
+            <td th:text="${categoty}">...</td>
+            <td th:text="${code}">...</td>
+        </tr>
+
+
+        </tbody>-->
+    </table>
+
 
     <form th:action="@{/product/remove/{id}}" method="post">
 
