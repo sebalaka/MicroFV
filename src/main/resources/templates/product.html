@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous"></link>
+    <script th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <title>Spring Security Example</title>
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/product/add}" method="post">
+
+        <div class="form-group">
+            <div class="col-lg-3">
+                <label> Product Name : <input id="name" class="form-control" type="text" name="name"/>
+                </label>
+            </div>
+            <div class="col-lg-3">
+                <label> Product Category : <input id="category" class="form-control" type="text" name="category"/>
+                </label>
+            </div>
+            <div class="col-lg-3">
+                <label> Product Code : <input id="code" class="form-control" type="text" name="code"/>
+                </label>
+            </div>
+            <div class="col-lg-3">
+                <label> Product Price : <input id="price" class="form-control" type="text" name="price"/>
+                </label>
+            </div>
+            <div class="col-lg-3">
+                <label> Product Amount : <input id="amount" class="form-control" type="text" name="amount"/>
+                </label>
+            </div>
+            <div class="col-lg-1">
+                <input class="btn btn-primary" type="submit" value="Add"/>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="container">
+        <h1 th:if="${hasBeenAdded}">Dodano nowy produkt</h1>
+        <h1 th:else="${hasBeenAdded}">Nic nie dodano</h1>
+    </div>
+
+
+    <form th:action="@{/product/remove/{id}}" method="post">
+
+        <div class="form-group">
+            <div class="col-lg-3">
+                <label> Product Name : <input id="id" class="form-control" type="text" name="id"/>
+                </label>
+            </div>
+            <div class="col-lg-1">
+                <input class="btn btn-primary" type="submit" value="remove"/>
+            </div>
+
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
