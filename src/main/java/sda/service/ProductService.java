@@ -46,13 +46,4 @@ public class ProductService {
 		}
 		return result;
 	}
-
-//	public List<Product> getAll() {
-//		Iterable<ProductEntity> all = productRepository.findAll();
-//		List<Product> result = new ArrayList<>();
-//		for(ProductEntity productEntity : all){
-//			result.add(productTransformer.transformToProduct(productEntity));
-//		}
-//		return result;
-//	}
 }

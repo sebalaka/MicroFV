@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous"></link>
+    <script th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <title>MicroFV Customers</title>
+</head>
+<body>
+<div class="container">
+
+    <form th:action="@{/customer/add}" method="post">
+
+        <div class="form-group">
+            <div class="col-lg-2">
+                <label> Customer Name : <input id="name" class="form-control" type="text" name="name"/>
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label> NIP : <input id="NIP" class="form-control" type="text" name="NIP"/>
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label> Address : <input id="address" class="form-control" type="text" name="address"/>
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label> Phone Number : <input id="telephone" class="form-control" type="text" name="telephone"/>
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label> e-mail : <input id="email" class="form-control" type="text" name="email"/>
+                </label>
+            </div>
+            <div class="col-lg-1">
+                <input class="btn btn-primary" type="submit" value="Add"/>
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+
+
+<div class="form-group">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>NIP</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>e-mail</th>
+            <th>Remove</th>
+        </tr>
+        </thead>
+
+        <tr th:each="customer : ${customers}">
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.NIP}"></td>
+            <td th:text="${customer.address}"></td>
+            <td th:text="${customer.telephone}"></td>
+            <td th:text="${customer.email}"></td>
+            <td>
+
+                <form th:action="@{'/customer/remove/' + ${customer.id} }" method="post">
+                    <!--<button type="submit">Remove</button>-->
+                    <div class="col-lg-1">
+                        <input class="btn btn-primary" type="submit" value="Remove"/>
+                    </div>
+                </form>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+
+<div style="height:100px;" class="span12">
+    <a href="http://localhost:9090/product">GO TO PRODUCTS</a>
+</div>
+<!--
+<div class="form-group">
+
+   <form th:action="@{'/product/remove/' + ${id} }" method="delete">
+           <div class="col-lg-1">
+               <label> Product Id : <input id="id" class="form-control" type="text" name="id"/>
+               </label>
+           </div>
+           <div class="col-lg-1">
+               <input class="btn btn-primary" type="submit" value="remove"/>
+           </div>
+
+
+   </form>
+</div>-->
+
+
+</body>
+</html>

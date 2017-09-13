@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component;
 public class ProductTransformer {
 
 	public ProductEntity transform (Product product){
-
-
 		ProductEntity productEntity = new ProductEntity();
 		productEntity.setId(product.getId());
 		productEntity.setName(product.getName());
