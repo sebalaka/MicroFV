@@ -26,15 +26,19 @@ public class ProductService {
 	}
 
 	public Long add(Product product){
-		ProductEntity productEntity = productRepository.save(productTransformer.transform(product));
-		return productEntity.getId();
+		if(product.getName().isEmpty()){
+			return null;
+		} else {
+			ProductEntity productEntity = productRepository.save(productTransformer.transform(product));
+			return productEntity.getId();
+		}
 	}
 
 	public void remove(Long id){
 		productRepository.delete(id);
 	}
 
-	public Iterable<Product> getAll() {
+	public List<Product> getAll() {
 		Iterable<ProductEntity> all = productRepository.findAll();
 		List<Product> result = new ArrayList<>();
 		for(ProductEntity productEntity : all){
@@ -42,4 +46,13 @@ public class ProductService {
 		}
 		return result;
 	}
+
+//	public List<Product> getAll() {
+//		Iterable<ProductEntity> all = productRepository.findAll();
+//		List<Product> result = new ArrayList<>();
+//		for(ProductEntity productEntity : all){
+//			result.add(productTransformer.transformToProduct(productEntity));
+//		}
+//		return result;
+//	}
 }

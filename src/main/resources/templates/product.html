@@ -12,26 +12,27 @@
 </head>
 <body>
 <div class="container">
+
     <form th:action="@{/product/add}" method="post">
 
         <div class="form-group">
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <label> Product Name : <input id="name" class="form-control" type="text" name="name"/>
                 </label>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <label> Product Category : <input id="category" class="form-control" type="text" name="category"/>
                 </label>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <label> Product Code : <input id="code" class="form-control" type="text" name="code"/>
                 </label>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <label> Product Price : <input id="price" class="form-control" type="text" name="price"/>
                 </label>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <label> Product Amount : <input id="amount" class="form-control" type="text" name="amount"/>
                 </label>
             </div>
@@ -42,50 +43,65 @@
         </div>
     </form>
 
-    <div class="container">
-        <h1 th:if="${hasBeenAdded}">Dodano nowy produkt</h1>
-        <h1 th:else="${hasBeenAdded}">Nic nie dodano</h1>
-    </div>
+</div>
 
+
+
+<div class="form-group">
     <table class="table">
         <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Code</th>
-            <th>Price</th>
-            <th>Amount</th>
-        </tr>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Code</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th>Remove</th>
+            </tr>
         </thead>
-        <!--<tbody>
-        <tr>
-            <th:block th:each="prodcut : ${prodcut}">
-        <tr>
-            <td th:text="${name}">...</td>
-            <td th:text="${categoty}">...</td>
-            <td th:text="${code}">...</td>
-        </tr>
 
+                  <tr th:each="product : ${products}">
+                       <td th:text="${product.id}"></td>
+                       <td th:text="${product.name}"></td>
+                       <td th:text="${product.category}"></td>
+                       <td th:text="${product.code}"></td>
+                       <td th:text="${product.price}"></td>
+                       <td th:text="${product.amount}"></td>
+                       <td>
 
-        </tbody>-->
+                           <form th:action="@{'/product/remove/' + ${product.id} }" method="post">
+                               <!--<button type="submit">Remove</button>-->
+                               <div class="col-lg-1">
+                                   <input class="btn btn-primary" type="submit" value="Remove"/>
+                               </div>
+                           </form>
+                       </td>
+                   </tr>
+
     </table>
+</div>
 
 
-    <form th:action="@{/product/remove/{id}}" method="post">
-
-        <div class="form-group">
-            <div class="col-lg-3">
-                <label> Product Name : <input id="id" class="form-control" type="text" name="id"/>
-                </label>
-            </div>
-            <div class="col-lg-1">
-                <input class="btn btn-primary" type="submit" value="remove"/>
-            </div>
-
-        </div>
-    </form>
+<div style="height:100px;" class="span12">
 
 </div>
+<!--
+<div class="form-group">
+
+   <form th:action="@{'/product/remove/' + ${id} }" method="delete">
+           <div class="col-lg-1">
+               <label> Product Id : <input id="id" class="form-control" type="text" name="id"/>
+               </label>
+           </div>
+           <div class="col-lg-1">
+               <input class="btn btn-primary" type="submit" value="remove"/>
+           </div>
+
+
+   </form>
+</div>-->
+
+
 </body>
 </html>

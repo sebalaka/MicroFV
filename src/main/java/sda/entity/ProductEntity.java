@@ -25,6 +25,15 @@ public class ProductEntity {
 	public ProductEntity() {
 	}
 
+	public ProductEntity(Long id, String name, String category, String code, BigDecimal price, Integer amount) {
+		this.id = id;
+		this.name = name;
+		this.category = category;
+		this.code = code;
+		this.price = price;
+		this.amount = amount;
+	}
+
 	public Long getId() {
 		return id;
 	}
