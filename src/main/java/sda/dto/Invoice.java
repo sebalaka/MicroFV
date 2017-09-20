@@ -1,7 +1,9 @@
 package sda.dto;
 
+import sda.entity.CustomerEntity;
+import sda.service.InvoiceNumberGenerator;
+
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,8 +15,8 @@ public class Invoice {
 	private String date;
 	private InvoiceNumberGenerator invoiceNumberGenerator;
 	private String invoiceNumber;
-	private String myCompany;
-	private Customer customer;
+	private String myCompanyName;
+	private CustomerEntity customer;
 	private List<Product> products;
 	private int VAT;
 	private BigDecimal totalNetPrice;
@@ -51,19 +53,19 @@ public class Invoice {
 		this.invoiceNumber = invoiceNumber;
 	}
 
-	public String getMyCompany() {
-		return myCompany;
+	public String getMyCompanyName() {
+		return myCompanyName;
 	}
 
-	public void setMyCompany(String myCompany) {
-		this.myCompany = myCompany;
+	public void setMyCompanyName(String myCompanyName) {
+		this.myCompanyName = myCompanyName;
 	}
 
-	public Customer getCustomer() {
+	public CustomerEntity getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(CustomerEntity customer) {
 		this.customer = customer;
 	}
 

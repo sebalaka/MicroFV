@@ -1,13 +1,8 @@
 package sda.entity;
 
-import sda.dto.Customer;
-import sda.dto.InvoiceNumberGenerator;
 import sda.dto.Product;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -23,8 +18,10 @@ public class InvoiceEntity {
 	private String date;
 	private String invoiceNumber;
 	private String myCompany;
-	private Customer customer;
-	private List<Product> products;
+	@OneToOne(cascade = CascadeType.ALL)
+	private CustomerEntity customer;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<ProductEntity> products;
 	private int VAT;
 	private BigDecimal totalNetPrice;
 	private BigDecimal totalGrossPrice;
@@ -64,19 +61,19 @@ public class InvoiceEntity {
 		this.myCompany = myCompany;
 	}
 
-	public Customer getCustomer() {
+	public CustomerEntity getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(CustomerEntity customer) {
 		this.customer = customer;
 	}
 
-	public List<Product> getProducts() {
+	public List<ProductEntity> getProducts() {
 		return products;
 	}
 
-	public void setProducts(List<Product> products) {
+	public void setProducts(List<ProductEntity> products) {
 		this.products = products;
 	}
 

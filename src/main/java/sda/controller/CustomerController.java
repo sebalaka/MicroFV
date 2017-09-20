@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import sda.dto.Customer;
+import sda.entity.CustomerEntity;
 import sda.service.CustomerService;
 
 import java.util.List;

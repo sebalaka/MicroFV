@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
->
+      xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -12,48 +12,21 @@
 </head>
 <body>
 
-<form th:action="@{/invoice/new}" method="post">
+    <form th:action="@{/invoice/new}" method="post">
 
-    <div class="form-group">
-        <div class="col-lg-2">
-            <label> Data : <input id="date" class="form-control" type="text" name="date"/>
-            </label>
-        </div>
-        <div class="col-lg-2">
-            <label> nr VF : <input id="invoiceNumber" class="form-control" type="text" name="invoiceNumber"/>
-            </label>
-        </div>
-        <div class="col-lg-2">
-            <label> Sprzedawca : <input id="myCompany" class="form-control" type="text" name="myCompany"/>
-            </label>
-        </div>
-        <div class="col-lg-2">
-            <label> Nabywca : <input id="customer" class="form-control" type="text" name="customer"/>
-            </label>
-        </div>
-        <div class="col-lg-2">
-            <label> Prodkty : <input id="products" class="form-control" type="text" name="products"/>
-            </label>
-        </div>
-        <div class="col-lg-2">
-            <label> VAT : <input id="VAT" class="form-control" type="text" name="VAT"/>
-            </label>
-        </div>
-        <div class="col-lg-2">
-            <label> NETTO : <input id="totalNetPrice" class="form-control" type="text" name="totalNetPrice"/>
-            </label>
-        </div>
-        <div class="col-lg-2">
-            <label> BRUTTO : <input id="totalGrossPrice" class="form-control" type="text" name="totalGrossPrice"/>
-            </label>
-        </div>
-        <div class="col-lg-1">
-            <input class="btn btn-primary" type="submit" value="Add"/>
+        <p>Date: <span th:text="${date}"></span></p>
+        <p>nr FV: <span th:text="${invoiceNum}"></span></p>
+
+
+        <div width="100">
+            <select class="form-control" th:field="${customers}"  id="dropOperator">
+                <option value="0" label="Wybierz Kontrahenta" ></option>
+                <option th:each="customer : ${customers}" th:value="${customer.name}" th:text="${customer.name}"></option>
+            </select>
         </div>
 
-    </div>
-</form>
 
+    </form>
 
 </body>
 </html>

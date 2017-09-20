@@ -3,9 +3,7 @@ package sda.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sda.dao.InvoiceRepository;
-import sda.dto.Customer;
 import sda.dto.Invoice;
-import sda.entity.CustomerEntity;
 import sda.entity.InvoiceEntity;
 import sda.transformer.InvoiceTransformer;
 
@@ -20,9 +18,14 @@ public class InvoiceService {
 
 	private InvoiceRepository invoiceRepository;
 	private InvoiceTransformer invoiceTransformer;
+	private InvoiceNumberGenerator invoiceNumberGenerator;
 
 	@Autowired
-	public InvoiceService(InvoiceRepository invoiceRepository, InvoiceTransformer invoiceTransformer) {
+	public InvoiceService(InvoiceRepository invoiceRepository,
+						  InvoiceTransformer invoiceTransformer,
+						  InvoiceNumberGenerator invoiceNumberGenerator
+						  ) {
+
 		this.invoiceRepository = invoiceRepository;
 		this.invoiceTransformer = invoiceTransformer;
 	}
@@ -45,8 +48,4 @@ public class InvoiceService {
 		return result;
 	}
 
-	public void addcustomer(CustomerEntity customerEntity) {
-
-
-	}
 }

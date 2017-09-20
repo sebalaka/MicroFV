@@ -1,4 +1,7 @@
-package sda.dto;
+package sda.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.Calendar;
@@ -7,11 +10,13 @@ import java.util.Date;
 /**
  * Created by RENT on 2017-09-14.
  */
+@Service
 public class InvoiceNumberGenerator {
 
 	private Date date;
 	private PrintWriter out;
 
+	@Autowired
 	public InvoiceNumberGenerator() {
 	}
 
@@ -45,7 +50,23 @@ public class InvoiceNumberGenerator {
 	}
 
 	public String getDate() {
-		return String.valueOf(getYear()) + "/" + String.valueOf(getMonth()) + "/" + String.valueOf(getDay());
+
+			String year = String.valueOf(getYear());
+			String month;
+			String day;
+
+			if(getMonth() < 10)
+				month = "0"+String.valueOf(getMonth());
+			else
+				month = String.valueOf(getMonth());
+
+		if(getDay() < 10)
+			day = "0"+String.valueOf(getDay());
+		else
+			day = String.valueOf(getDay());
+
+
+		return year + "/" + month + "/" + day;
 	}
 
 }
