@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous"></link>
+    <script th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <title>Magazyn</title>
+</head>
+<body>
+<div class="container">
+
+    <form th:action="@{/product/add}" method="post">
+
+        <div class="form-group">
+            <div class="col-lg-2">
+                <label> Nazwa Produktu : <input id="name" class="form-control" type="text" name="name"/>
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label> Kategoria : <input id="category" class="form-control" type="text" name="category"/>
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label> Kod : <input id="code" class="form-control" type="text" name="code"/>
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label> Cena netto : <input id="price" class="form-control" type="text" name="price"/>
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label> Ilość na stanie  : <input id="amount" class="form-control" type="text" name="amount"/>
+                </label>
+            </div>
+            <div class="col-lg-1">
+                <input class="btn btn-primary" type="submit" value="Add"/>
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+
+
+<div class="form-group">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nazwa</th>
+                <th>Kategoria</th>
+                <th>Kod</th>
+                <th>Cena netto</th>
+                <th>Ilość</th>
+                <th>Usuń</th>
+            </tr>
+        </thead>
+
+                  <tr th:each="product : ${products}">
+                       <td th:text="${product.id}"></td>
+                       <td th:text="${product.name}"></td>
+                       <td th:text="${product.category}"></td>
+                       <td th:text="${product.code}"></td>
+                       <td th:text="${product.price}"></td>
+                       <td th:text="${product.amount}"></td>
+                       <td>
+
+                           <form th:action="@{'/product/remove/' + ${product.id} }" method="post">
+                               <!--<button type="submit">Remove</button>-->
+                               <div class="col-lg-1">
+                                   <input class="btn btn-primary" type="submit" value="Remove"/>
+                               </div>
+                           </form>
+                       </td>
+                   </tr>
+
+    </table>
+</div>
+
+
+<div style="height:100px;" class="span12">
+    <a href="http://localhost:9090/customer">KONTRAHENCI</a>
+</div>
+<!--
+<div class="form-group">
+
+   <form th:action="@{'/product/remove/' + ${id} }" method="delete">
+           <div class="col-lg-1">
+               <label> Product Id : <input id="id" class="form-control" type="text" name="id"/>
+               </label>
+           </div>
+           <div class="col-lg-1">
+               <input class="btn btn-primary" type="submit" value="remove"/>
+           </div>
+
+
+   </form>
+</div>-->
+
+
+</body>
+</html>
